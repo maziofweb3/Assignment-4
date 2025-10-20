@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+
 import "./CreateLottery.css";
 interface createLotteryProps {
-  createLottery: () => Promise<void>;
-  setLotteryId: () => Promise<void>;
-  setNoOfPart: () => Promise<void>;
-  lotteryId: number;
-  Lottery_noOfPart: number;
+  createLottery: () => void;
+  setLotteryId: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setNoOfPart: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  lotteryId: string;
+  Lottery_noOfPart: string;
 }
 
 const CreateLottery = ({
@@ -13,25 +13,16 @@ const CreateLottery = ({
   setLotteryId,
   setNoOfPart,
   lotteryId,
-  Lottery_noOfPart
+  Lottery_noOfPart,
 }: createLotteryProps) => {
-
   return (
     <div className="CreateLottery lottery-inputs">
-
       <input
         placeholder="Lottery ID"
         value={lotteryId}
         min={1}
         onChange={setLotteryId}
         type="number"
-      />
-
-      <input
-        placeholder="Lottery Name"
-        /* value={Lottery_Name}
-        onChange={setName} */
-        type="text"
       />
 
       <input
@@ -48,7 +39,6 @@ const CreateLottery = ({
         className="button"
         value="Create Lottery"
       />
-
     </div>
   );
 };

@@ -1,20 +1,38 @@
+
 interface ParticipantProps {
   account: string;
-  getOwner: () => Promise<void>;
+  getOwner: () => void;
   owner: string;
 
-  lotteryId_p: number;
-  setLotteryId_p: () => Promise<void>;
-  participate: () => Promise<void>;
+  lotteryId_p: string;
+  setLotteryId_p: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  participate: () => void;
 }
 
-const Participant = ({ account, getOwner, owner, lotteryId_p, setLotteryId_p, participate }: ParticipantProps) => {
+const Participant = ({
+  account,
+  getOwner,
+  owner,
+  lotteryId_p,
+  setLotteryId_p,
+  participate,
+}: ParticipantProps) => {
   return (
     <div>
       <h4>{account}</h4>
       <div className="CreateLottery lottery-inputs">
-        <input placeholder="Lottery ID" value={lotteryId_p} onInput={setLotteryId_p} type="number" />
-        <input type="submit" className="button" onChange={participate} value="Participate" />
+        <input
+          placeholder="Lottery ID"
+          value={lotteryId_p}
+          onChange={setLotteryId_p}
+          type="number"
+        />
+        <input
+          type="submit"
+          className="button"
+          onClick={participate}
+          value="Participate"
+        />
       </div>
 
       <div>
